@@ -1,75 +1,71 @@
-# React + TypeScript + Vite
+# 📦 ContextPack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Instant, client-side codebase packager for LLM prompts. Zero servers, zero database, zero data leakage.
 
-Currently, two official plugins are available:
+ContextPack bundles your project files and directory structure into clean, token-optimized context blocks ready for Claude, ChatGPT, Cursor, and other LLMs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+### 🚀 Live Demo
+**[Launch ContextPack](https://context-pack-6nw.pages.dev)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### ✨ Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **🔒 100% Client-Side Privacy:** All file reading and text processing occur directly in your browser via the HTML5 File System API. Your proprietary code never touches a remote server.
+- **🧹 Automatic Noise Filtering:** Strips dependencies and build artifacts automatically, including `node_modules/`, `.git/`, `dist/`, build caches, lockfiles, and binary assets (`.png`, `.wasm`, `.pdf`, `.mp4`).
+- **🌲 ASCII Directory Tree:** Generates a structured architectural tree at the top of your prompt so the LLM understands your folder layout before reading the code.
+- **🎯 Multi-Model Output Presets:**
+  - **Standard Markdown:** Formatted with clean file path headings and language-specific syntax blocks.
+  - **Claude XML:** Formatted with Anthropic's optimal `<documents>`, `<source>`, and `<document_content>` tags for high-precision retrieval.
+- **⚡ Real-Time Token Estimator:** Instant token gauge (~3.8 characters per token heuristic) so you stay within your model's context budget.
+- **🔍 File Search & Filter:** Instant search bar to filter specific file paths, folders, or extensions.
+- **☑️ Granular Control:** Checkbox toggles and batch actions to select or deselect specific files before export.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Framework:** React 19 + TypeScript + Vite
+- **Styling:** Tailwind CSS v3
+- **Icons:** Lucide React
+- **Hosting & CI/CD:** Cloudflare Pages (Edge CDN)
 
+---
+
+### 💻 Local Development
+
+Clone the repository and run the development server locally:
+
+```bash
+# Clone the repository
+git clone git@github.com:AhmedHoussou/context-pack.git
+
+# Navigate into project directory
+cd context-pack
+
+# Install dependencies
+npm install
+
+# Start local Vite development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📦 Production Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Type check and build static bundle
+npm run build
 
+# Preview production build locally
+npm run preview
 ```
+
+---
+
+### 📄 License
+
+MIT License. Free and open source for personal and commercial use.
